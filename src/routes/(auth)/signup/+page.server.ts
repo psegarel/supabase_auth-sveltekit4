@@ -7,16 +7,20 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({ request, locals: { supabase } }) => {
+	default: async ({ url, request, locals: { supabase } }) => {
 		const result = await getEmailandPassword(request);
 		if (isTypeAuthRequestData(result)) {
 			const { email, password } = result;
 			try {
-				const register = await supabase.auth.signUp({ email, password });
+				const register = await supabase.auth.signUp({
+					email,
+					password,
+					options: { emailRedirectTo: url.origin }
+				});
 			} catch (error) {
 				return error;
 			}
-			redirect(303, '/auth/email-confirm');
+			redirect(303, '/email-confirm');
 		}
 	}
 } satisfies Actions;
