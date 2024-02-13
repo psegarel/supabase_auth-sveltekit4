@@ -9,17 +9,20 @@ export const load = (async () => {
 export const actions = {
 	default: async ({ url, request, locals: { supabase } }) => {
 		const result = await getEmailandPassword(request);
+
 		if (isTypeAuthRequestData(result)) {
+			//
 			const { email, password } = result;
-			try {
-				const register = await supabase.auth.signUp({
-					email,
-					password,
-					options: { emailRedirectTo: url.origin }
-				});
-			} catch (error) {
-				return error;
+			const { error } = await supabase.auth.signUp({
+				email,
+				password,
+				options: { emailRedirectTo: `${url.origin}/api/auth/callback` }
+			});
+
+			if (error) {
+				return fail(500, { message: 'Server error. Try again later.', success: false, email });
 			}
+
 			redirect(303, '/email-confirm');
 		}
 	}

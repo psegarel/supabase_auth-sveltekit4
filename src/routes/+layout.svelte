@@ -29,6 +29,7 @@
 	<ul class="flex flex-row gap-4">
 		<li><a class="text-xs font-light uppercase" href="/login">Login</a></li>
 		<li><a class="text-xs font-light uppercase" href="/signup">Signup</a></li>
+		<li><a class="text-xs font-light uppercase" href="/protected-routes">Protected</a></li>
 	</ul>
 </div>
 <slot />
