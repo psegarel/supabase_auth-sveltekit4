@@ -19,8 +19,6 @@
 				}
 			});
 			subscription = data.subscription;
-			const user = await supabase.auth.getUser();
-			console.log(user);
 		}
 	});
 
