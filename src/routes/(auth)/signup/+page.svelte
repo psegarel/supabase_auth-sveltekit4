@@ -6,6 +6,7 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
 	let isSigningUp = false;
 	let passwordVisible = false;
 
