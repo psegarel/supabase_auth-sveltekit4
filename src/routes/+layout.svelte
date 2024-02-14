@@ -2,24 +2,31 @@
 <script lang="ts">
 	import '../app.pcss';
 	import { invalidate } from '$app/navigation';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import type { LayoutData } from './$types';
-	import UserIcon from '$lib/icons/UserIcon.svelte';
+	import type { Subscription } from '@supabase/supabase-js';
 
 	export let data: LayoutData;
+	let subscription: Subscription;
 
 	$: ({ supabase, session } = data);
 
-	onMount(() => {
+	onMount(async () => {
 		if (supabase) {
-			const {
-				data: { subscription }
-			} = supabase.auth.onAuthStateChange((event, _session) => {
+			const { data } = supabase.auth.onAuthStateChange((event, _session) => {
 				if (_session?.expires_at !== session?.expires_at) {
 					invalidate('supabase:auth');
 				}
 			});
-			return () => subscription.unsubscribe();
+			subscription = data.subscription;
+			const user = await supabase.auth.getUser();
+			console.log(user);
+		}
+	});
+
+	onDestroy(() => {
+		if (typeof subscription !== 'undefined') {
+			subscription.unsubscribe();
 		}
 	});
 </script>
