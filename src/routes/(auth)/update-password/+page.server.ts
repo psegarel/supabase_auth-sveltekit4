@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -9,6 +10,7 @@ export const actions = {
 
 		if (password && confirm && password == confirm) {
 			await supabase.auth.updateUser({ password });
+			redirect(303, '/');
 		}
 	}
 } satisfies Actions;
