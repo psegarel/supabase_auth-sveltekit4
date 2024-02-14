@@ -15,7 +15,7 @@
 	<form
 		use:enhance={() => {
 			return async ({ result }) => {
-				if (result.status == 200) {
+				if (result.status == 303) {
 					isSubmitting = false;
 					goto('/', { invalidateAll: true });
 				}

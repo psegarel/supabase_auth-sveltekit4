@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -9,6 +10,6 @@ export const actions = {
 			redirectTo: `${url.origin}/update-password`
 		});
 
-		return {};
+		redirect(303, '/email-confirm');
 	}
 } satisfies Actions;

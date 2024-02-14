@@ -14,9 +14,9 @@
 	<form
 		use:enhance={() => {
 			return async ({ result }) => {
-				if (result.status == 200) {
+				if (result.status == 303 && result.type == 'redirect') {
 					isSubmitting = false;
-					goto('/', { invalidateAll: true });
+					goto('/email-confirm', { invalidateAll: true });
 				}
 			};
 		}}
