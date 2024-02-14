@@ -5,6 +5,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import type { LayoutData } from './$types';
 	import type { Subscription } from '@supabase/supabase-js';
+	import Navbar from '$lib/components/Navbar.svelte';
 
 	export let data: LayoutData;
 	let subscription: Subscription;
@@ -19,6 +20,7 @@
 				}
 			});
 			subscription = data.subscription;
+			console.log(session);
 		}
 	});
 
@@ -29,16 +31,5 @@
 	});
 </script>
 
-<div class="flex h-20 w-screen flex-row items-center justify-between gap-4 p-4 px-16 shadow-md">
-	<a class="font-semibold tracking-tighter" href="/">Supabase Auth</a>
-	<div>
-		<ul class="flex flex-row gap-4">
-			<li><a class="text-xs font-light uppercase" href="/profile">Profile</a></li>
-			<li><a class="text-xs font-light uppercase" href="/login">Login</a></li>
-			<li><a class="text-xs font-light uppercase" href="/signup">Signup</a></li>
-			<li><a class="text-xs font-light uppercase" href="/logout">Logout</a></li>
-			<li><a class="text-xs font-light uppercase" href="/protected-routes">Protected</a></li>
-		</ul>
-	</div>
-</div>
+<Navbar {session} />
 <slot />

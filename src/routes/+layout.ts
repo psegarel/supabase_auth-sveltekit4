@@ -4,8 +4,9 @@ import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/publi
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { browser } from '$app/environment';
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
+import type { LayoutLoad } from './$types';
 
-export const load = async ({ fetch, depends, data }) => {
+export const load: LayoutLoad = async ({ fetch, depends, data }) => {
 	depends('supabase:auth');
 	let supabase: SupabaseClient;
 
@@ -32,5 +33,5 @@ export const load = async ({ fetch, depends, data }) => {
 
 		return { supabase, session };
 	}
-	return {};
+	return { supabase: null, session: null };
 };
