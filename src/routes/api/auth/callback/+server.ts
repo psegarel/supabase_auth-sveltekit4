@@ -1,21 +1,22 @@
-import { AuthApiError } from '@supabase/supabase-js';
-import type { RequestHandler } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
+import type { EmailOtpType } from '@supabase/supabase-js';
 
-export const GET: RequestHandler = async ({ url, locals: { supabase } }) => {
-	const code = url.searchParams.get('code');
+export const GET = async (event) => {
+	const {
+		url,
+		locals: { supabase }
+	} = event;
+	const token_hash = url.searchParams.get('token_hash') as string;
+	const type: EmailOtpType = url.searchParams.get('type') as EmailOtpType;
+	const next = url.searchParams.get('next') ?? '/';
 
-	if (code) {
-		try {
-			const exchange = await supabase.auth.exchangeCodeForSession(code);
-			console.log('Exchange', exchange);
-		} catch (error) {
-			console.log('Error', error);
-			if (error instanceof AuthApiError) {
-				// deal with the error
-			}
+	if (token_hash && type) {
+		const { error } = await supabase.auth.verifyOtp({ token_hash, type });
+		if (!error) {
+			throw redirect(303, `/${next.slice(1)}`);
 		}
 	}
 
-	redirect(303, '/');
+	// return the user to an error page with some instructions
+	throw redirect(303, '/auth-code-error');
 };
