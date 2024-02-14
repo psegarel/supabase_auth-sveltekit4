@@ -18,7 +18,9 @@
 	}
 </script>
 
-{#if session}
-	<p>client-side data fetching with RLS</p>
-	<pre>{JSON.stringify(loadedData, null, 2)}</pre>
-{/if}
+<div class="w-screen p-4 pt-40 lg:px-16">
+	{#if session}
+		<p>client-side data fetching with RLS</p>
+		<pre>{JSON.stringify(loadedData, null, 2)}</pre>
+	{/if}
+</div>

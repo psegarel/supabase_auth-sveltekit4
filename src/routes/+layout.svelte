@@ -28,8 +28,10 @@
 	<a class="font-semibold tracking-tighter" href="/">Supabase Auth</a>
 	<div>
 		<ul class="flex flex-row gap-4">
+			<li><a class="text-xs font-light uppercase" href="/profile">Profile</a></li>
 			<li><a class="text-xs font-light uppercase" href="/login">Login</a></li>
 			<li><a class="text-xs font-light uppercase" href="/signup">Signup</a></li>
+			<li><a class="text-xs font-light uppercase" href="/logout">Logout</a></li>
 			<li><a class="text-xs font-light uppercase" href="/protected-routes">Protected</a></li>
 		</ul>
 	</div>

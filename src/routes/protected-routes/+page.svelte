@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-Protected Routes
+<div class="w-screen p-4 pt-40 lg:px-16">Protected Routes</div>
