@@ -4,6 +4,7 @@
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import type { LayoutData } from './$types';
+	import UserIcon from '$lib/icons/UserIcon.svelte';
 
 	export let data: LayoutData;
 
@@ -18,7 +19,6 @@
 					invalidate('supabase:auth');
 				}
 			});
-
 			return () => subscription.unsubscribe();
 		}
 	});
@@ -26,10 +26,12 @@
 
 <div class="flex h-20 w-screen flex-row items-center justify-between gap-4 p-4 px-16 shadow-md">
 	<a class="font-semibold tracking-tighter" href="/">Supabase Auth</a>
-	<ul class="flex flex-row gap-4">
-		<li><a class="text-xs font-light uppercase" href="/login">Login</a></li>
-		<li><a class="text-xs font-light uppercase" href="/signup">Signup</a></li>
-		<li><a class="text-xs font-light uppercase" href="/protected-routes">Protected</a></li>
-	</ul>
+	<div>
+		<ul class="flex flex-row gap-4">
+			<li><a class="text-xs font-light uppercase" href="/login">Login</a></li>
+			<li><a class="text-xs font-light uppercase" href="/signup">Signup</a></li>
+			<li><a class="text-xs font-light uppercase" href="/protected-routes">Protected</a></li>
+		</ul>
+	</div>
 </div>
 <slot />

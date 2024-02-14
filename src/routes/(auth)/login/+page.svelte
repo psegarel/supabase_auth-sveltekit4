@@ -24,7 +24,7 @@
 			};
 		}}
 		class="flex w-full flex-col gap-4 lg:w-1/4"
-		action="/auth/?/login"
+		action=""
 		method="POST"
 	>
 		<div>

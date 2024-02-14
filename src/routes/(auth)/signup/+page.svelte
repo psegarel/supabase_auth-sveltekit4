@@ -3,9 +3,14 @@
 	import { goto } from '$app/navigation';
 	import PasswordInput from '$lib/components/PasswordInput.svelte';
 	import BarsRotateIcon from '$lib/icons/BarsRotateIcon.svelte';
+	import type { PageData } from './$types';
 
+	export let data: PageData;
 	let isSigningUp = false;
 	let passwordVisible = false;
+
+	const email = 'patrick@insense.vn';
+	const pwd = 'x2MNprs5';
 
 	function onClick() {
 		isSigningUp = true;
@@ -17,13 +22,12 @@
 		use:enhance={() => {
 			return async ({ result }) => {
 				if (result.status == 303 && result.type == 'redirect') {
-					goto('/auth/email-confirm');
+					goto('/email-confirm');
 					isSigningUp = false;
 				}
 			};
 		}}
 		class="flex w-full flex-col gap-4 lg:w-1/4"
-		action="/auth/?/register"
 		method="POST"
 	>
 		<div>
@@ -33,10 +37,11 @@
 					class="rounded bg-zinc-100 px-2 py-4 text-sm focus:outline-none"
 					type="text"
 					name="email"
+					value={email}
 				/>
 			</label>
 		</div>
-		<PasswordInput />
+		<PasswordInput value={pwd} />
 		<div class="my-4"></div>
 		<button
 			on:click={onClick}
