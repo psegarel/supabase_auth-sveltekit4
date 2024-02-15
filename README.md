@@ -1,38 +1,44 @@
-# create-svelte
+# Supabase Auth / SvelteKit 4 Starter ( Typescript )
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Email Auth with PKCE flow for SSR
+Email authentication in your server-side rendering (SSR) application to work with the PKCE flow, with API endpoint for verifying the token_hash along with the type to exchange token_hash for the user's session, which is set as a cookie for future requests made to Supabase.
 
-## Creating a project
+# Check the docs...
+But I worked on this starter because I found many things were unclear or even wrong, the logic remains though.
 
-If you're seeing this, you've probably already done this step. Congrats!
+# https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flow-for-ssr?framework=sveltekit
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
+# Update email templates with URL for API endpoint
+
+## Confirm sign up
+
+```bash 
+<h2>Confirm your signup!</h2>
+
+<p>Follow this link to confirm your user:</p>
+<p>
+  <a href="{{ .SiteURL }}/api/auth/callback?token_hash={{ .TokenHash }}&type=email"
+    >Confirm your email</a
+  >
+</p>
 ```
+Here the api endpoint is /api/auth/callback, but this is up to you.
 
-## Developing
+## Reset Password
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```bash 
+<h2>Reset Password</h2>
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+<p>Follow this link to reset the password for your user:</p>
+<p>
+  <a
+    href="{{ .SiteURL }}/api/auth/callback?token_hash={{ .TokenHash }}&type=recovery&next=/update-password"
+    >Reset Password</a
+  >
+</p>
 ```
+Check the other email templates, depending on your application needs
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+# TailwindCSS & Daisy UI
+A personal choice...
