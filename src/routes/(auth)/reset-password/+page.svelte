@@ -37,13 +37,13 @@
 			on:click={onClick}
 			class="btn relative bg-zinc-600 px-4 py-2 text-xs uppercase text-white active:bg-zinc-400"
 		>
-			<div class="absolute flex w-full flex-col items-center">
+			<span class="absolute flex w-full flex-col items-center">
 				{#if isSubmitting}
 					<BarsRotateIcon size={16} />
 				{:else}
 					Reset Password
 				{/if}
-			</div>
+			</span>
 		</button>
 	</form>
 </div>

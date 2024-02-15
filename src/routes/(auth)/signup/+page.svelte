@@ -3,15 +3,8 @@
 	import { goto } from '$app/navigation';
 	import PasswordInput from '$lib/components/PasswordInput.svelte';
 	import BarsRotateIcon from '$lib/icons/BarsRotateIcon.svelte';
-	import type { PageData } from './$types';
-
-	export let data: PageData;
 
 	let isSigningUp = false;
-	let passwordVisible = false;
-
-	const email = 'patrick@insense.vn';
-	const pwd = 'x2MNprs5';
 
 	function onClick() {
 		isSigningUp = true;
@@ -38,11 +31,10 @@
 					class="rounded bg-zinc-100 px-2 py-4 text-sm focus:outline-none"
 					type="text"
 					name="email"
-					value={email}
 				/>
 			</label>
 		</div>
-		<PasswordInput value={pwd} />
+		<PasswordInput />
 		<div class="my-4"></div>
 		<button
 			on:click={onClick}

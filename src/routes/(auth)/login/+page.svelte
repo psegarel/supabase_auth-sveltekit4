@@ -5,9 +5,6 @@
 	import BarsRotateIcon from '$lib/icons/BarsRotateIcon.svelte';
 	let isLogin = false;
 
-	const email = 'patrick@insense.vn';
-	const pwd = 'x2MNprs5';
-
 	function onClick() {
 		isLogin = true;
 	}
@@ -34,11 +31,10 @@
 					class="rounded bg-zinc-100 px-2 py-4 text-sm focus:outline-none"
 					type="text"
 					name="email"
-					value={email}
 				/>
 			</label>
 		</div>
-		<PasswordInput value={pwd} />
+		<PasswordInput />
 		<div class="my-4"></div>
 		<div class="flex flex-row items-center justify-end">
 			<a
