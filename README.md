@@ -1,13 +1,23 @@
 # Supabase Auth / SvelteKit 4 Starter ( Typescript )
 
 Email Auth with PKCE flow for SSR
-Email authentication in your server-side rendering (SSR) application. API endpoint for verifying the token_hash along with the type to exchange token_hash for the user's session, which is set as a cookie for future requests made to Supabase.
+Email authentication in your server-side rendering (SSR) application using the new @supabase/ssr package. 
+API endpoint for verifying the token_hash along with the type to exchange token_hash for the user's session, which is set as a cookie for future requests made to Supabase.
 
 ### Check the docs...
 But I worked on this starter because I found many things to be unclear or even wrong, the logic remains though.
+Make sure to check how to set up a project with an .env file:
+
+```bash 
+# Values to be found on your Supabase project dashboard
+#https://supabase.com/dashboard/project/[YOUR_PROJECT_ID]/settings/api
+PUBLIC_SUPABASE_URL=
+PUBLIC_SUPABASE_ANON_KEY=
+```
 
 ```bash
 https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flow-for-ssr?framework=sveltekit
+https://supabase.com/docs/guides/auth/auth-helpers/sveltekit
 ```
 
 ### Update email templates with URL for API endpoint
