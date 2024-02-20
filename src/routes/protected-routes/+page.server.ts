@@ -4,7 +4,7 @@ import type { PageServerLoad } from './$types';
 export const load = (async ({ locals: { getSession } }) => {
 	const session = await getSession();
 	if (!session) {
-		redirect(301, '/');
+		redirect(303, '/');
 	}
 	return {};
 }) satisfies PageServerLoad;
