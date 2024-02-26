@@ -11,6 +11,9 @@ https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flo
 https://supabase.com/docs/guides/auth/auth-helpers/sveltekit
 ```
 
+You can also check this article:
+[Securing Your SvelteKit App with Supabase Authentication](https://www.patrick-segarel.com/blog/securing-your-sveltekit-app-with-supabase-authentication).
+
 But I worked on this starter because I found many things to be unclear or even wrong, the logic remains though.
 Make sure to check how to set up a project with an .env file:
 
@@ -56,3 +59,5 @@ Check the other email templates, depending on your application needs
 
 ### TailwindCSS & Daisy UI
 A personal choice...
+
+### You can a
