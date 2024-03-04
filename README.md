@@ -59,5 +59,3 @@ Check the other email templates, depending on your application needs
 
 ### TailwindCSS & Daisy UI
 A personal choice...
-
-### You can a
